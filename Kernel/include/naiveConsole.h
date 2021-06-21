@@ -6,6 +6,7 @@
 #define SCROLL_UP_LINES 1
 #define BLACK 0x000000
 #define WHITE 0xFFFFFF
+#define RED 0xFF0000
 
 void ncPrint(const char * string);
 void ncPrintAtt(const char * string, uint32_t frontColor, uint32_t backColor);

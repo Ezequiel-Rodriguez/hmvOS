@@ -25,6 +25,7 @@ EXTERN irqDispatcher
 EXTERN sysCallDispatcher
 EXTERN exceptionDispatcher
 EXTERN set_up_process
+EXTERN get_current_rsp
 
 SECTION .text
 
@@ -153,6 +154,8 @@ SECTION .text
 	mov al, 20h
 	out 20h, al
 
+	call get_current_rsp
+	mov rsp, rax
 	popStateHardware
 	iretq
 %endmacro

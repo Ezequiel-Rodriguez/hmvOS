@@ -1,3 +1,4 @@
+rebuild: clean all
 
 all:  bootloader kernel userland image
 

@@ -3,6 +3,7 @@
 #include <time.h>
 #include <keyboard.h>
 #include <naiveConsole.h>
+#include <process.h>
 #define STDERR 2
 
 typedef void (*PException)();
@@ -17,13 +18,12 @@ static void exception(char * msg, uint8_t len) {
     print(STDERR, msg, len);
     show_registers();
     print(STDERR, "Press enter to continue...", 26);
-    int elapsed = 0, actual = seconds_elapsed();
-    do{
-        _hlt();
-        elapsed = seconds_elapsed();
-    } while(actual + 5 >= elapsed);
-
-    // TODO: find a way to restart the process after the exc is called.
+    uint8_t sc;
+        do{
+        if (copy_from_buffer(&sc,1)==-1) 
+            _hlt();
+    } while(sc != '\n');
+    restart_process();
 }
 
 static void int_00(void){

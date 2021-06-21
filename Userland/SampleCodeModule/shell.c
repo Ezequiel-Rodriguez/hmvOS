@@ -9,13 +9,13 @@ typedef void (*Pcommands)(void);
 void fechayhora_2();
 
 // TODO: should be compared with strcmp
-char * commands[COMMANDS] = {"ayuda", "inforeg", "support", "zerodiv", "wrongop", "fechayhora", "printmem"};
+char * commands[COMMANDS] = {"ayuda", "inforeg", "support", "zerodiv", "wrongop", "fechayhora", "prtmem"};
 
 // TODO: implement printf along with scanf, putChar and getChar in order for this functionality to work
 void ayuda() {
-    printf("\nLos comandos disponibles son los siguientes:\n\n");
+    printf("Los comandos disponibles son los siguientes:\n\n");
     printf("inforeg       -imprime en pantalla el valor de todos los registros.\n");
-    printf("printmem      -realiza un volcado de memoria de 32 bytes a partir de la\n");
+    printf("prtmem        -realiza un volcado de memoria de 32 bytes a partir de la\n");
     printf("               direccion que se recibe como argumento.\n");
     printf("fechayhora    -desplega en pantalla el dia y la hora del sistema.\n");
     printf("ayuda         -muestra todos los comandos disponibles.\n");
@@ -90,9 +90,9 @@ uint64_t pow(uint64_t a, uint64_t b) {
     return aux;
 }
 
-void printmem() {
+void prtmem() {
     printf("Memory dump at : 0x");
-    char buf[17]={0};
+    char buf[64]={0};
     int i = 0;
     char c;
     while((c = getchar()) != '\n' && i < 16) {
@@ -125,9 +125,8 @@ void printmem() {
         pos += aux * pow(16, len);
         len--;
     }
-    char mem[64] = {0};
-    memdump(mem, (uint8_t *)pos);
-    printf(mem);
+    memdump(buf, (uint8_t *)pos);
+    printf(buf);
     printf("\n");
 }
 
@@ -208,7 +207,7 @@ void fechayhora(){
     printf("\n");
 }
 
-Pcommands command_codes[] = {&ayuda, &inforeg, &features_support, &zerodiv, &wrongop, &fechayhora_2, &printmem};
+Pcommands command_codes[] = {&ayuda, &inforeg, &features_support, &zerodiv, &wrongop, &fechayhora_2, &prtmem};
 
 int run_shell() {
     printf("\n");
