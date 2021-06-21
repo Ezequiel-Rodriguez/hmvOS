@@ -114,9 +114,6 @@ void prtmem() {
         }
         else if(buf[i]>='a' && buf[i]<='f') {
             aux = buf[i] - 97 + 10;
-        }
-        else if(buf[i]>='A' && buf[i]<='F') {
-            aux = buf[i] - 65 + 10;
         } else {
             printf("Wrong value.\n"); 
             return;
