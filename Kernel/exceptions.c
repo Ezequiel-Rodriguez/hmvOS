@@ -23,6 +23,7 @@ static void exception(char * msg, uint8_t len) {
         if (copy_from_buffer(&sc,1)==-1) 
             _hlt();
     } while(sc != '\n');
+    ncNewline();
     restart_process();
 }
 

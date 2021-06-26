@@ -207,6 +207,7 @@ void fechayhora(){
 Pcommands command_codes[] = {&ayuda, &inforeg, &features_support, &zerodiv, &wrongop, &fechayhora_2, &prtmem};
 
 int run_shell() {
+    printf("To see a list of available commands type command \"ayuda\"\n");
     printf("\n");
     char buffer[MAX_BUFFER_LENGTH] = {0};
     while(1) {
