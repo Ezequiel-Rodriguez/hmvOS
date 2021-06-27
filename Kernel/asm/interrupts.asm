@@ -129,6 +129,7 @@ SECTION .text
 
 %macro sysCallHandlerMaster 1
 	pushStateSysCall
+	sti
 
 	mov rcx, rax  ;; TODO: Check this, there has to be a better way of doing it.
 	call sysCallDispatcher
@@ -139,6 +140,7 @@ SECTION .text
 	out 20h, al
 	pop rax
 
+	cli
 	popStateSysCall
 	iretq
 %endmacro
